@@ -1,0 +1,9 @@
+.home-container {
+  background: url(https://fondosmil.com/fondo/56631.jpg);
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
