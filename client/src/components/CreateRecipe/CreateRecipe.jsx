@@ -76,17 +76,17 @@ export default function CreateRecipe() {
     if (e.target.name === "dishTypes") {
       setForm({
         ...form,
-        [e.target.name]: [...form.dishTypes, e.target.value],
+        dishTypes: [...new Set([...form.dishTypes, e.target.value])],
       });
     } else if (e.target.name === "diets") {
       setForm({
         ...form,
-        [e.target.name]: [...form.diets, e.target.value],
+        diets: [...new Set([...form.diets, e.target.value])],
       });
     } else if (e.target.name === "cuisines") {
       setForm({
         ...form,
-        [e.target.name]: [...form.cuisines, e.target.value],
+        cuisines: [...new Set([...form.cuisines, e.target.value])],
       });
     }
   };
