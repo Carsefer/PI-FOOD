@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { dishDB, cuisines } from "./List";
 import "./CreateRecipe.css";
 import camara from "../img/camara.png";
+import bloq from "../img/bloq.png";
 export default function CreateRecipe() {
   const listDiets = useSelector((state) => state.listDiets);
   const lis = listDiets.map((e) => e.name);
@@ -30,8 +31,14 @@ export default function CreateRecipe() {
   const myRegex = {
     name: /^\s/g,
   };
-
-  const handleClick = (e) => {
+  const handleBloq = (e) => {
+    e.preventDefault();
+    setForm({
+      ...form,
+      image: "",
+    });
+  };
+  const handleAdd = (e) => {
     e.preventDefault();
     setForm({
       ...form,
@@ -53,6 +60,7 @@ export default function CreateRecipe() {
     }
     alert("Recipe created");
     history.push("/home");
+    window.location.reload();
   };
   const handleDishDelete = (el) => {
     setForm({
@@ -116,9 +124,8 @@ export default function CreateRecipe() {
           Back
         </button>
         <div className="create-recipe-main">
-          <div className="div-h1-title">
-            <h1>Create Recipe</h1>
-          </div>
+          <h1 className="h1-tittle">Create Recipe</h1>
+
           <form
             autoComplete="off"
             className="create-recipe-form"
@@ -142,7 +149,7 @@ export default function CreateRecipe() {
               </span>
               {/* READY IN MINUTES*/}
               <div>
-                <label className="label-main">Ready in Minutes</label>
+                <label className="label-main">Ready in Minutes: </label>
                 <input
                   className="input-ready-recipe"
                   name="readyInMinutes"
@@ -205,8 +212,11 @@ export default function CreateRecipe() {
                 onChange={(e) => handleChange(e)}
               />
               <img className="img-form" src={form.image} alt={form.image} />
-              <button className="add-url" onClick={handleClick}>
+              <button className="add-url" onClick={handleAdd}>
                 <img className="camera" src={camara} alt="camera" />
+              </button>
+              <button className="bloq-url" onClick={handleBloq}>
+                <img className="bloq" src={bloq} alt="bloq" />
               </button>
             </div>
             {/* CUISINES */}

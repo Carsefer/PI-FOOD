@@ -20,6 +20,7 @@ export default function PageDetail(props) {
     dispatch(deleteRecipe(id));
     alert("Recipe deleted");
     history.push("/home");
+    window.location.reload();
   };
 
   const infoRecipes = useSelector((state) => state.infoRecipes);

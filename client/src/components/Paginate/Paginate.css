@@ -43,3 +43,18 @@
   background: re;
   color: #000;
 }
+
+@media (max-width: 675px) {
+  .paginate-container {
+    margin-right: 22px;
+    width: 350px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 675px) {
+  .btnNB:hover {
+    background: rgb(243, 149, 42);
+    color: #000;
+  }
+}

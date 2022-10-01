@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import { Paginate } from "../Paginate/Paginate";
 import SearchBar from "../SearchBar/SearchBar";
+import github from "../img/github.png";
+import linkedin from "../img/linkedin.png";
 
 import "./Recipes.css";
 export default function Recipes() {
   const dispatch = useDispatch();
   const recipes = useSelector((state) => state.recipes);
+
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
   const allRecipesPage = currentPage * postsPerPage;
@@ -19,8 +22,11 @@ export default function Recipes() {
   const [, setOrder] = useState("");
 
   useEffect(() => {
-    dispatch(getAllRecipes());
-  }, [dispatch]);
+    if (!recipes.length) {
+      dispatch(getAllRecipes());
+    }
+  }, [dispatch, recipes]);
+
   return recipes.length > 0 && recipes !== undefined ? (
     <>
       <div className="recipes-container">
@@ -63,14 +69,14 @@ export default function Recipes() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="icon-github"></span>
+            <img className="icon-github" src={github} alt="github" />
           </a>
           <a
             href="https://www.linkedin.com/in/carlos-rodríguez-25708a246/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="icon-linkedin"></span>
+            <img className="icon-linkedin" src={linkedin} alt="linkedin" />
           </a>
         </div>
       </footer>
